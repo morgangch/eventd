@@ -1,0 +1,55 @@
+name: Feature Request
+description: Propose a new feature or capability
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea? Great! Tell us what problem you want to solve.
+
+  - type: input
+    id: component
+    attributes:
+      label: Target component
+      placeholder: "e.g. core / rule-engine / cli / dashboard / mcp"
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What is the pain point or limitation you're hitting?
+      placeholder: "Currently there is no way to … and this makes it hard to …"
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the feature you want and how it should work.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought about?
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Suggested delivery phase
+      options:
+        - Phase 1 — MVP
+        - Phase 2 — Feature complete
+        - Phase 3 — Advanced
+        - No preference
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Mockups, references, prior art…

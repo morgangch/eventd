@@ -1,19 +1,43 @@
-# eventd Architecture (Bootstrap)
+# Architecture
 
-## Layers
+For the authoritative, fully detailed architecture document see:  
+[`ARCHITECTURE.md` (root)](https://github.com/morgangch/eventd/blob/main/ARCHITECTURE.md)
 
-- `core/`: native event processing engine (C++).
-- `cli/`: operator commands (`eventctl`) for local and remote control.
-- `web/backend/`: API and orchestration endpoints.
-- `web/frontend/`: operator dashboard.
-- `mcp/`: reserved MCP integration server.
+---
 
-## Contracts
+## Pipeline at a glance
 
-JSON schemas in `proto/` define event and rule contracts across components.
+```mermaid
+flowchart TD
+    A["OS / subprocess"] -->|raw bytes| B[Collector]
+    B --> C["Event Bus\n(async queue)"]
+    C --> D["Enrichment\n(/proc cache)"]
+    D --> E["Rule Engine\n(YAML DSL)"]
+    E -->|match| F["Action Executor\n(thread pool)"]
+    F --> G[Output]
+    G --> H[REST API]
+    H --> I[Dashboard / MCP]
+```
 
-## Deployment
+## Monorepo layers
 
-- `deploy/systemd/`: host service units.
-- `deploy/docker/`: compose stack for local integration.
-- `deploy/k8s/`: future cluster packaging.
+| Path | Role |
+|------|------|
+| `core/` | Native C++17 engine — all pipeline stages |
+| `cli/` | `eventctl` operator CLI |
+| `web/backend/` | FastAPI REST API and orchestration |
+| `web/frontend/` | React + Vite operator dashboard |
+| `mcp/` | MCP server (Phase 3) |
+| `proto/` | JSON Schema contracts shared across components |
+| `deploy/` | Docker Compose, systemd, Kubernetes |
+
+## Component overview
+
+| Component | Docs |
+|-----------|------|
+| Event Collector | [collector](components/collector.md) |
+| Event Bus | [event-bus](components/event-bus.md) |
+| Enrichment Layer | [enrichment](components/enrichment.md) |
+| Rule Engine | [rule-engine](components/rule-engine.md) |
+| Action Executor | [action-executor](components/action-executor.md) |
+| Output | [output](components/output.md) |

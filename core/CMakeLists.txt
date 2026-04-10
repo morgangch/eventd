@@ -18,5 +18,8 @@ if(BUILD_TESTING)
     add_executable(core-smoke-tests
         tests/test_smoke.cpp
     )
+    target_include_directories(core-smoke-tests
+        PRIVATE include
+    )
     add_test(NAME core-smoke COMMAND core-smoke-tests)
 endif()

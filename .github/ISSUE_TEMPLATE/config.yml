@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://morgangch.github.io/eventd/
+    about: Browse the full eventd documentation
+  - name: Architecture overview
+    url: https://github.com/morgangch/eventd/blob/main/ARCHITECTURE.md
+    about: Understand the system design and component contracts

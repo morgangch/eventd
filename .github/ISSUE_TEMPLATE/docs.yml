@@ -1,0 +1,46 @@
+name: Documentation Issue
+description: Report missing, incorrect, or unclear documentation
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us keep the docs accurate and useful.
+
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      description: File path, URL, or section name.
+      placeholder: "e.g. docs/components/rule-engine.md or https://morgangch.github.io/eventd/"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type of documentation issue
+      options:
+        - Missing documentation
+        - Incorrect information
+        - Unclear or confusing
+        - Outdated
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: What is wrong or missing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: If you have a proposed fix or addition, share it here.

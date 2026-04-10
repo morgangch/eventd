@@ -1,0 +1,76 @@
+name: Bug Report
+description: Report a defect in eventd
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug.
+        Please fill in as much detail as possible — it helps us fix things faster.
+
+  - type: input
+    id: component
+    attributes:
+      label: Affected component
+      description: "Which part of eventd is affected?"
+      placeholder: "e.g. core / cli / web/backend / web/frontend / mcp / deploy"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: A clear, concise description of what the bug is.
+      placeholder: "When I run … I expect … but instead I get …"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: A minimal sequence of steps to trigger the bug.
+      placeholder: |
+        1. Start the stack with `docker compose up`
+        2. Send event `…`
+        3. Observe error `…`
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Paste relevant logs or error output here.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, GCC/Clang version, Docker version, Python version…
+      placeholder: |
+        - OS: Ubuntu 24.04
+        - GCC: 14.x
+        - Docker: 27.x
+        - Python: 3.12.x
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Screenshots, config files, minimal reproducer repo, etc.
