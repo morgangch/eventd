@@ -1,0 +1,28 @@
+services:
+  core:
+    build:
+      context: ../../core
+    image: eventd/core:local
+
+  backend:
+    build:
+      context: ../../web/backend
+    image: eventd/backend:local
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ../../web/frontend
+    image: eventd/frontend:local
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  mcp:
+    build:
+      context: ../../mcp
+    image: eventd/mcp:local
+    ports:
+      - "8100:8100"

@@ -1,0 +1,13 @@
+[Unit]
+Description=eventd core engine
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/eventd-core
+Restart=on-failure
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target

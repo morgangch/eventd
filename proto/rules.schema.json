@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eventd/rules.schema.json",
+  "title": "Rule",
+  "type": "object",
+  "required": ["name", "condition", "action"],
+  "properties": {
+    "name": { "type": "string" },
+    "condition": { "type": "string" },
+    "action": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string" },
+        "params": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

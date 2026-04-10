@@ -1,0 +1,15 @@
+# C++ build outputs
+core/build/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node
+node_modules/
+web/frontend/dist/
+
+# OS/editor
+.DS_Store
+Thumbs.db
